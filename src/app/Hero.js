@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 function Hero() {
@@ -22,8 +23,8 @@ function Hero() {
                 Développeur Web & Mobile
               </h1>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
-                Je conçois des applications web et mobiles modernes qui ont un sens
-                pour les utilisateurs.
+                Je conçois des applications web et mobiles modernes qui ont un
+                sens pour les utilisateurs.
               </p>
             </motion.div>
             <motion.div
@@ -33,6 +34,14 @@ function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="flex items-center gap-4 flex-wrap">
+                <a
+                  href="/cv/CV_Junior_Fotio_Tchoffo.pdf"
+                  download
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-indigo-600 text-white text-base font-medium hover:bg-indigo-700 transition-all duration-200 shadow-md"
+                >
+                  <Download size={20} />
+                  mon CV
+                </a>
                 <Link
                   target="_blank"
                   href="https://github.com/PepitoJr"
@@ -49,7 +58,7 @@ function Hero() {
                 </Link>
                 <a
                   href="#projets"
-                  className="px-6 py-3 rounded-lg bg-indigo-600 text-white text-base font-medium hover:bg-indigo-700 transition-all duration-200 shadow-md"
+                  className="px-6 py-3 rounded-lg border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 text-base font-medium hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all duration-200"
                 >
                   Voir mes projets
                 </a>
