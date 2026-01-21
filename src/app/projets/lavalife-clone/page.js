@@ -34,9 +34,10 @@ export default function LavaLifePage() {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
-              Cette application permet de mettre en contact des personnes, pour un travail, pour des
-              amitiés ou pour toute autre relation. Avec envoi des messages et la possibilité de répondre
-              à tous ces messages.
+              Cette application permet de mettre en contact des personnes, pour
+              un travail, pour des amitiés ou pour toute autre relation. Avec
+              envoi des messages et la possibilité de répondre à tous ces
+              messages.
             </p>
 
             {/* Authentification */}
@@ -47,7 +48,9 @@ export default function LavaLifePage() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Login</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Login
+                  </h3>
                   <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
                     <Image
                       src="/imgs/photo-projets/loginLavaLife.png"
@@ -74,7 +77,7 @@ export default function LavaLifePage() {
                     </div>
                     <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
                       <Image
-                        src="/imgs/photo-projets/inscriptionLavalifeStep2.png"
+                        src="/imgs/photo-projets/inscriptionLavaLifeStep2.png"
                         alt="Inscription étape 2"
                         width={800}
                         height={500}
@@ -99,8 +102,9 @@ export default function LavaLifePage() {
                     Recherche de personne
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Nous pouvons rechercher des personnes par tranche d&apos;âge, par groupe ethnique, en
-                    fonction des raisons et par sexe.
+                    Nous pouvons rechercher des personnes par tranche
+                    d&apos;âge, par groupe ethnique, en fonction des raisons et
+                    par sexe.
                   </p>
                   <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
                     <Image
@@ -119,8 +123,9 @@ export default function LavaLifePage() {
                     Consultation des messages
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Dans cette partie nous avons la possibilité de lire le message, de supprimer les
-                    messages, de répondre aux messages et de composer un message.
+                    Dans cette partie nous avons la possibilité de lire le
+                    message, de supprimer les messages, de répondre aux messages
+                    et de composer un message.
                   </p>
                   <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
                     <Image
@@ -139,7 +144,8 @@ export default function LavaLifePage() {
                     Détails de l&apos;utilisateur
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Dans cette partie, nous pouvons voir les détails de chaque utilisateur.
+                    Dans cette partie, nous pouvons voir les détails de chaque
+                    utilisateur.
                   </p>
                   <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
                     <Image
@@ -158,8 +164,8 @@ export default function LavaLifePage() {
                     Composer un message
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Dans cette partie, nous pouvons envoyer des messages à tous les utilisateurs que nous
-                    avons choisis.
+                    Dans cette partie, nous pouvons envoyer des messages à tous
+                    les utilisateurs que nous avons choisis.
                   </p>
                   <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
                     <Image
@@ -184,32 +190,48 @@ export default function LavaLifePage() {
                 <div className="flex flex-col items-center gap-3 p-6 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg transition-all">
                   <SiDotnet className="text-5xl text-purple-600" />
                   <div className="text-center">
-                    <div className="font-semibold text-gray-900 dark:text-white">ASP.NET</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Framework</div>
+                    <div className="font-semibold text-gray-900 dark:text-white">
+                      ASP.NET
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      Framework
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center gap-3 p-6 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg transition-all">
                   <Server className="text-5xl text-blue-600" />
                   <div className="text-center">
-                    <div className="font-semibold text-gray-900 dark:text-white">SQL Server</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Base de données</div>
+                    <div className="font-semibold text-gray-900 dark:text-white">
+                      SQL Server
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      Base de données
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center gap-3 p-6 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg transition-all">
                   <FaBootstrap className="text-5xl text-purple-500" />
                   <div className="text-center">
-                    <div className="font-semibold text-gray-900 dark:text-white">Bootstrap</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">v5 & CSS</div>
+                    <div className="font-semibold text-gray-900 dark:text-white">
+                      Bootstrap
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      v5 & CSS
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center gap-3 p-6 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg transition-all">
                   <FaGithub className="text-5xl text-gray-900 dark:text-white" />
                   <div className="text-center">
-                    <div className="font-semibold text-gray-900 dark:text-white">Git/GitHub</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Contrôle de version</div>
+                    <div className="font-semibold text-gray-900 dark:text-white">
+                      Git/GitHub
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      Contrôle de version
+                    </div>
                   </div>
                 </div>
               </div>
