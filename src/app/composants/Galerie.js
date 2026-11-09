@@ -61,11 +61,15 @@ function Galerie({ children }) {
       if (e.key === "ArrowRight") naviguer(1);
       if (e.key === "ArrowLeft") naviguer(-1);
     };
-    const overflow = document.body.style.overflow;
+    // Bloque le défilement en gardant la place de la barre de défilement, pour que la page ne se décale pas
+    const { overflow, paddingRight } = document.body.style;
+    const largeurBarre = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    if (largeurBarre > 0) document.body.style.paddingRight = `${largeurBarre}px`;
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = overflow;
+      document.body.style.paddingRight = paddingRight;
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [ouvert, fermer, naviguer]);
@@ -87,6 +91,7 @@ function Galerie({ children }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             onClick={fermer}
             onTouchStart={(e) => (toucheDepart.current = e.touches[0].clientX)}
             onTouchEnd={(e) => {
