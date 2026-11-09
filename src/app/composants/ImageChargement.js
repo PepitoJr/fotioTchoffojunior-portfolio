@@ -2,12 +2,22 @@
 import { cn } from "@/lib/utils";
 import { ImageIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useGalerie } from "./Galerie";
 
 // Remplace next/image : affiche un état de chargement animé tant que l'image n'est pas prête
-function ImageChargement({ className, wrapperClassName, fill, width, style, onLoad, ...props }) {
+// Dans une <Galerie>, l'image s'y enregistre et l'ouvre au clic (sauf si galerie={false})
+function ImageChargement({ className, wrapperClassName, fill, width, style, onLoad, galerie = true, ...props }) {
   const [chargee, setChargee] = useState(false);
   const compact = !fill && width && width < 150;
+  const contexteGalerie = useGalerie();
+  const dansGalerie = galerie && contexteGalerie;
+  const enregistrer = dansGalerie ? contexteGalerie.enregistrer : null;
+  const { src, alt } = props;
+
+  useEffect(() => {
+    if (enregistrer) return enregistrer({ src, alt });
+  }, [enregistrer, src, alt]);
 
   const loader = (
     <span
@@ -46,7 +56,12 @@ function ImageChargement({ className, wrapperClassName, fill, width, style, onLo
       {...props}
       fill={fill}
       width={width}
-      className={cn(className, chargee ? "opacity-100 blur-0" : "opacity-0 blur-md")}
+      {...(dansGalerie && { onClick: () => contexteGalerie.ouvrir(src) })}
+      className={cn(
+        className,
+        chargee ? "opacity-100 blur-0" : "opacity-0 blur-md",
+        dansGalerie && "cursor-zoom-in hover:brightness-95"
+      )}
       style={{ transition: "opacity 700ms ease, filter 700ms ease, transform 300ms ease", ...style }}
       onLoad={(e) => {
         setChargee(true);
