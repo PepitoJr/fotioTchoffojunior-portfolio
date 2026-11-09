@@ -47,7 +47,7 @@ export const projects = [
   {
     id: 5,
     slug: "autoparts",
-    nom: "AutoParts – Vente de pièces auto",
+    nom: "AutoParts (vente de pièces auto)",
     description:
       "Boutique en ligne de pièces automobiles avec catalogue filtrable, alertes de rupture de stock, centres de retrait et tableau de bord administrateur. Développée avec Symfony.",
     image: "/imgs/photo-projets/autoPartsCatalogue.jpeg",

@@ -161,4 +161,8 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Texte sélectionné en vert au lieu du bleu par défaut */
+  ::selection {
+    @apply bg-emerald-500 text-white;
+  }
 }

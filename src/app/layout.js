@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Portfolio – Junior Fotio Tchoffo",
+  title: "Portfolio | Junior Fotio Tchoffo",
   description:
     "Développeur Web & Mobile. Découvrez mes compétences, mes projets et contactez-moi pour collaborer.",
   metadataBase: new URL("https://example.com"),
@@ -24,11 +24,11 @@ export const metadata = {
     apple: "/imgs/photo-moi/monLogo.png",
   },
   openGraph: {
-    title: "Portfolio – Junior Fotio Tchoffo",
+    title: "Portfolio | Junior Fotio Tchoffo",
     description:
       "Développeur Web & Mobile. Découvrez mes compétences, mes projets et contactez-moi pour collaborer.",
     url: "https://example.com",
-    siteName: "Portfolio – Junior Fotio Tchoffo",
+    siteName: "Portfolio | Junior Fotio Tchoffo",
     images: [
       { url: "/imgs/photo-projets/heroQuizz.png", width: 1200, height: 630, alt: "Aperçu Portfolio" },
     ],
@@ -37,7 +37,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio – Junior Fotio Tchoffo",
+    title: "Portfolio | Junior Fotio Tchoffo",
     description:
       "Développeur Web & Mobile. Découvrez mes compétences, mes projets et contactez-moi pour collaborer.",
     images: ["/imgs/photo-projets/heroQuizz.png"],

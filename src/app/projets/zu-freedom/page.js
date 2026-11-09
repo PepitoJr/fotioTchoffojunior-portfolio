@@ -31,7 +31,7 @@ export default function ZuFreedomPage() {
 
           <div className="p-8 md:p-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Zu-Freedom – gestion des enregistrements de patients
+              Zu-Freedom : gestion des enregistrements de patients
             </h1>
 
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
