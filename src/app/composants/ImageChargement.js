@@ -6,24 +6,12 @@ import { useEffect, useState } from "react";
 import { useGalerie } from "./Galerie";
 
 // Remplace next/image : affiche un état de chargement animé tant que l'image n'est pas prête
-// Dans une <Galerie>, l'image s'y enregistre et l'ouvre au clic (sauf si galerie={false})
-// surFondSombre : loader discret et transparent, sans flou (utilisé dans la lightbox)
-function ImageChargement({
-  className,
-  wrapperClassName,
-  fill,
-  width,
-  style,
-  onLoad,
-  galerie = true,
-  surFondSombre = false,
-  ...props
-}) {
+// Dans une <Galerie>, l'image s'y enregistre et l'ouvre au clic
+function ImageChargement({ className, wrapperClassName, fill, width, style, onLoad, ...props }) {
   const [chargee, setChargee] = useState(false);
   const compact = !fill && width && width < 150;
-  const contexteGalerie = useGalerie();
-  const dansGalerie = galerie && contexteGalerie;
-  const enregistrer = dansGalerie ? contexteGalerie.enregistrer : null;
+  const galerie = useGalerie();
+  const enregistrer = galerie ? galerie.enregistrer : null;
   const { src, alt } = props;
 
   useEffect(() => {
@@ -34,13 +22,12 @@ function ImageChargement({
     <span
       aria-hidden="true"
       className={cn(
-        "img-loader pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-hidden rounded-[inherit] transition-opacity duration-500",
-        surFondSombre ? "bg-transparent" : "bg-gray-100 dark:bg-gray-800",
+        "img-loader pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-hidden rounded-[inherit] bg-gray-100 dark:bg-gray-800 transition-opacity duration-500",
         chargee && "opacity-0"
       )}
     >
-      {!surFondSombre && <span className="img-loader-shimmer absolute inset-0" />}
-      {compact || surFondSombre ? (
+      <span className="img-loader-shimmer absolute inset-0" />
+      {compact ? (
         <span className="relative h-5 w-5 rounded-full border-2 border-indigo-200 border-t-indigo-600 dark:border-indigo-900 dark:border-t-indigo-400 animate-spin" />
       ) : (
         <span className="relative flex flex-col items-center gap-3">
@@ -68,18 +55,13 @@ function ImageChargement({
       {...props}
       fill={fill}
       width={width}
-      {...(dansGalerie && { onClick: () => contexteGalerie.ouvrir(src) })}
+      {...(galerie && { "data-galerie": src, onClick: (e) => galerie.ouvrir(src, e.currentTarget) })}
       className={cn(
         className,
-        chargee ? "opacity-100 blur-0" : surFondSombre ? "opacity-0" : "opacity-0 blur-md",
-        dansGalerie && "cursor-zoom-in hover:brightness-95"
+        chargee ? "opacity-100 blur-0" : "opacity-0 blur-md",
+        galerie && "cursor-zoom-in hover:brightness-95"
       )}
-      style={{
-        transition: surFondSombre
-          ? "opacity 250ms ease"
-          : "opacity 700ms ease, filter 700ms ease, transform 300ms ease",
-        ...style,
-      }}
+      style={{ transition: "opacity 700ms ease, filter 700ms ease, transform 300ms ease", ...style }}
       onLoad={(e) => {
         setChargee(true);
         onLoad?.(e);
