@@ -59,6 +59,7 @@ function MesProjets() {
                 nom={project.nom}
                 description={project.description}
                 image={project.image}
+                imageContain={project.imageContain}
                 tags={project.tags}
                 slug={project.slug}
                 githubLink={project.github}

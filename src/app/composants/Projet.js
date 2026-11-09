@@ -2,18 +2,20 @@
 import Image from "@/app/composants/ImageChargement";
 import Link from "next/link";
 
-function Projet({ nom, description, image, slug }) {
+function Projet({ nom, description, image, imageContain, slug }) {
   return (
     <Link href={`/projets/${slug}`} className="group block h-full">
       <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-        <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
+        <div
+          className={`relative aspect-video overflow-hidden ${imageContain ? "bg-black" : "bg-gray-100 dark:bg-gray-700"}`}
+        >
           <Image
             src={image}
             width={700}
             height={600}
             wrapperClassName="h-full w-full"
             alt={`Aperçu du projet ${nom}`}
-            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+            className={`${imageContain ? "object-contain" : "object-cover"} w-full h-full group-hover:scale-105 transition-transform duration-300`}
           />
         </div>
         <div className="p-6 flex-1 flex flex-col">
