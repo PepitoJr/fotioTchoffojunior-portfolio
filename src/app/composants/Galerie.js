@@ -15,6 +15,18 @@ const glissement = {
   sortie: (direction) => ({ x: `${direction * -35}%`, opacity: 0, scale: 0.97 }),
 };
 
+// À la fermeture, la photo disparaît d'abord sur le fond noir, puis le fond s'efface :
+// évite que la grande photo se superpose à la page pendant le fondu
+const fondOverlay = {
+  cache: { opacity: 0, transition: { duration: 0.25, ease: "easeInOut", when: "afterChildren" } },
+  visible: { opacity: 1, transition: { duration: 0.2, ease: "easeOut" } },
+};
+
+const contenuOverlay = {
+  cache: { opacity: 0, scale: 0.95, transition: { duration: 0.15, ease: "easeIn" } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.25, ease: "easeOut" } },
+};
+
 export function useGalerie() {
   return useContext(GalerieContext);
 }
@@ -81,17 +93,18 @@ function Galerie({ children }) {
     <GalerieContext.Provider value={{ enregistrer, ouvrir }}>
       {children}
 
+      {/* Pas de backdrop-blur sur l'overlay : combiné au fondu, le flou disparaît d'un coup à la fermeture (flash) */}
       <AnimatePresence>
         {photo && (
           <motion.div
             role="dialog"
             aria-modal="true"
             aria-label="Galerie de photos"
-            className="fixed inset-0 z-100 flex flex-col bg-black/90 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-100 flex flex-col bg-black/90"
+            variants={fondOverlay}
+            initial="cache"
+            animate="visible"
+            exit="cache"
             onClick={fermer}
             onTouchStart={(e) => (toucheDepart.current = e.touches[0].clientX)}
             onTouchEnd={(e) => {
@@ -116,7 +129,7 @@ function Galerie({ children }) {
             </div>
 
             {/* Image principale */}
-            <div className="relative flex-1 min-h-0 mx-4 sm:mx-20">
+            <motion.div variants={contenuOverlay} className="relative flex-1 min-h-0 mx-4 sm:mx-20">
               <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={photo.src}
@@ -183,7 +196,7 @@ function Galerie({ children }) {
                   </button>
                 </>
               )}
-            </div>
+            </motion.div>
 
             {/* Légende + miniatures */}
             <div className="px-4 py-4 space-y-3" onClick={(e) => e.stopPropagation()}>
