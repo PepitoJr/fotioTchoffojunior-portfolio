@@ -8,6 +8,13 @@ import ImageChargement from "./ImageChargement";
 
 const GalerieContext = createContext(null);
 
+// La photo entre du côté de la flèche cliquée et l'ancienne sort du côté opposé
+const glissement = {
+  entree: (direction) => ({ x: `${direction * 35}%`, opacity: 0, scale: 0.97 }),
+  centre: { x: 0, opacity: 1, scale: 1 },
+  sortie: (direction) => ({ x: `${direction * -35}%`, opacity: 0, scale: 0.97 }),
+};
+
 export function useGalerie() {
   return useContext(GalerieContext);
 }
@@ -105,15 +112,20 @@ function Galerie({ children }) {
 
             {/* Image principale */}
             <div className="relative flex-1 min-h-0 mx-4 sm:mx-20">
-              <AnimatePresence initial={false} custom={direction} mode="popLayout">
+              <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={photo.src}
                   custom={direction}
+                  variants={glissement}
+                  initial="entree"
+                  animate="centre"
+                  exit="sortie"
+                  transition={{
+                    x: { type: "spring", stiffness: 260, damping: 32 },
+                    opacity: { duration: 0.25 },
+                    scale: { duration: 0.3 },
+                  }}
                   className="absolute inset-0"
-                  initial={{ opacity: 0, x: direction * 80 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction * -80 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   <div className="relative h-full w-full">
                     <ImageChargement
@@ -122,12 +134,25 @@ function Galerie({ children }) {
                       fill
                       sizes="100vw"
                       galerie={false}
+                      surFondSombre
                       className="object-contain"
                       onClick={(e) => e.stopPropagation()}
                     />
                   </div>
                 </motion.div>
               </AnimatePresence>
+
+              {/* Précharge les photos voisines pour qu'elles s'affichent sans attente */}
+              {plusieurs && (
+                <div aria-hidden="true" className="pointer-events-none invisible absolute h-px w-px overflow-hidden">
+                  {[-1, 1].map((pas) => {
+                    const voisine = photos[(index + pas + photos.length) % photos.length];
+                    return (
+                      <Image key={pas} src={voisine.src} alt="" fill sizes="100vw" loading="eager" />
+                    );
+                  })}
+                </div>
+              )}
 
               {plusieurs && (
                 <>
