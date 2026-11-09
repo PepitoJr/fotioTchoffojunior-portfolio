@@ -114,6 +114,46 @@
   --sidebar-ring: oklch(0.60 0.15 265);
 }
 
+/* État de chargement des images */
+.img-loader-shimmer {
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    color-mix(in oklch, var(--primary) 18%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  animation: img-shimmer 1.6s linear infinite;
+}
+
+.img-loader-ring {
+  background: conic-gradient(from 0deg, transparent 0deg, var(--primary) 300deg, transparent 360deg);
+  animation: img-spin 1s linear infinite;
+}
+
+@keyframes img-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes img-shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-loader *,
+  .img-loader-shimmer,
+  .img-loader-ring {
+    animation-duration: 3s;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/app/composants/ImageChargement";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { FaGithub, FaLaravel } from "react-icons/fa";

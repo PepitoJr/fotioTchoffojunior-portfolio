@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
-import Image from "next/image";
+import Image from "@/app/composants/ImageChargement";
 import Link from "next/link";
 function Hero() {
   return (
@@ -75,6 +75,7 @@ function Hero() {
             <div className="relative">
               <Image
                 className="rounded-2xl shadow-2xl w-full max-w-md object-cover"
+                wrapperClassName="rounded-2xl"
                 src="/imgs/photo-moi/juniorportfolio.jpeg"
                 alt="photo de profil"
                 width={400}

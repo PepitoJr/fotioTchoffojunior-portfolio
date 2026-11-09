@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "@/app/composants/ImageChargement";
 import Link from "next/link";
 
 function Projet({ nom, description, image, slug }) {
@@ -11,6 +11,7 @@ function Projet({ nom, description, image, slug }) {
             src={image}
             width={700}
             height={600}
+            wrapperClassName="h-full w-full"
             alt={`Aperçu du projet ${nom}`}
             className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
           />

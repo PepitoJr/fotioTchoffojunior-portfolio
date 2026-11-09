@@ -1,7 +1,7 @@
 "use client";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
-import Image from "next/image";
+import Image from "@/app/composants/ImageChargement";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -33,6 +33,7 @@ function Navbar() {
               alt="Logo Portfolio"
               width={65}
               height={65}
+              wrapperClassName="shrink-0 rounded-lg"
               className="object-contain"
             />
             <span className="text-2xl font-bold text-gray-900 dark:text-white">

@@ -1,5 +1,5 @@
 import { ArrowLeft, Server } from "lucide-react";
-import Image from "next/image";
+import Image from "@/app/composants/ImageChargement";
 import Link from "next/link";
 import { FaBootstrap, FaGithub } from "react-icons/fa";
 import { SiDotnet } from "react-icons/si";
